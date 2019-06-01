@@ -1,0 +1,10 @@
+---
+- name: helps download files 
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks: 
+    - name: download 1 package
+      get_url:
+        url: "url goes here"
+        dest: /tmp/
