@@ -1,5 +1,5 @@
 ---
-- hosts: web
+- hosts: localhost
   name: install wordpress
   become: yes
   become_method: sudo
