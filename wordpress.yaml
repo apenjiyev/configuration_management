@@ -20,7 +20,7 @@
         - php 
         - php-mysql
         - php-fpm
-        enablerepo: "remi-"{{ php72 }}",epel"
+        enablerepo: "remi-{{ "php72" }},epel"
       ignore_errors: true 
     
     - name: download 1 package
@@ -74,7 +74,7 @@
         - php-mbstring
         - php-xml
         - php-gd
-        enablerepo: "remi-"{{ php72 }}",epel"
+        enablerepo: "remi-{{ "php72" }},epel"
       become: true
 
 
