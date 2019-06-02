@@ -1,0 +1,16 @@
+---
+- name: terminate ec2 instances
+  vars_prompt:
+    - name: ID
+      prompt: "which instance?"
+      private: not
+    - name: REGION
+      prompt: "which region?"
+      private: not
+  hosts: localhost
+  tasks:
+    - name: terminate instances 
+      ec2:
+        instance_ids: "{{ID}}"
+        state: absent
+        region: "{{REGION}}"
