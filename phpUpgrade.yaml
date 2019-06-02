@@ -30,5 +30,5 @@
       - php-mbstring
       - php-xml
       - php-gd
-      nablerepo: "remi-{{ php_version }},epel"
+      enablerepo: "remi-{{ php_version }},epel"
     become: true
