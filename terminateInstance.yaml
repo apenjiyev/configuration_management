@@ -3,10 +3,10 @@
   vars_prompt:
     - name: ID
       prompt: "which instance?"
-      private: not
+      private: no
     - name: REGION
       prompt: "which region?"
-      private: not
+      private: no
   hosts: localhost
   tasks:
     - name: terminate instances 
