@@ -1,5 +1,5 @@
 ---
-- hosts: web
+- hosts: php
   name: install wordpress
   gather_facts: no
   connection: ssh
@@ -27,7 +27,7 @@
       shell: "sudo yum-config-manager --enable remi-php70"
     - name: update httpd php
       shell: "sudo yum update httpd php php-mysql mysql"
-      
+
     - name: download 1 package
       get_url:
         url: "https://wordpress.org/latest.tar.gz"
@@ -55,29 +55,3 @@
       become: yes
       become_method: sudo
     
-    - name: remi and epel
-      yum: 
-        name: 
-        - "{{ remi_release_url }}"
-        - "{{ epel_release_url }}"
-      become: true 
-    
-    - name: get remi key
-      get_url: 
-      - url: "{{ remi_key_url }}" 
-      - dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-remi
-      become: true 
-
-    - name: install php7 packages 
-      yum:
-        name:
-        - php
-        - nginx
-        - php-fpm
-        - php-mysql
-        - php-pdo
-        - php-mbstring
-        - php-xml
-        - php-gd
-        enablerepo: "remi-{{ php_version }},epel"
-      become: true
