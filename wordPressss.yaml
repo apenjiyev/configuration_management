@@ -1,6 +1,6 @@
 ---
 - hosts: php
-  name: install wordpress here efdsfdsfsflkjljldskjf
+  name: install wordpress here flkjljldskjf
   become: yes
   become_method: sudo
   tasks: 
