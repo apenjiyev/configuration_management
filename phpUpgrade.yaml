@@ -7,28 +7,29 @@
     remi_key_url: "http://rpms.remirepo.net/RPM-GPG-KEY-remi"
   name: install remi and epel repo from remote 
   tasks:
-    yum: 
-      name: 
-        - "{{ remi_release_url }}"
-        - "{{ epel_release_url }}"
-    become: true 
+    - name: yum install remi and repo
+      yum: 
+        name: 
+          - "{{ remi_release_url }}"
+          - "{{ epel_release_url }}"
+      become: true 
 
-    name: get remi key
-    get_url: 
-      url: "{{ remi_key_url }}" 
-      dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-remi
-    become: true 
+    - name: get remi key
+      get_url: 
+        url: "{{ remi_key_url }}" 
+        dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-remi
+      become: true 
 
-    name: install php7 packages 
-    yum:
-      name:
-        - php
-        - nginx
-        - php-fpm
-        - php-mysql
-        - php-pdo
-        - php-mbstring
-        - php-xml
-        - php-gd
-      enablerepo: "remi-{{ php_version }},epel"
-    become: true
+    - name: install php7 packages 
+      yum:
+        name:
+          - php
+          - nginx
+          - php-fpm
+          - php-mysql
+          - php-pdo
+          - php-mbstring
+          - php-xml
+          - php-gd
+        enablerepo: "remi-{{ php_version }},epel"
+      become: true
