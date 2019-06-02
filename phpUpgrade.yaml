@@ -1,16 +1,21 @@
 ---
 - hosts: web
+  vars:
+    php_version: php72
+    remi_release_url: "http://rpms.remirepo.net/enterprise/remi-release-6.rpm"
+    epel_release_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm"
+    remi_key_url: "http://rpms.remirepo.net/RPM-GPG-KEY-remi"
   name: install remi and epel repo from remote 
   tasks:
     yum: 
       name: 
-      - "{{ http://rpms.remirepo.net/enterprise/remi-release-6.rpm }}"
-      - "{{ https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm }}"
+      - "{{ remi_release_url }}"
+      - "{{ epel_release_url }}"
     become: true 
     
     name: get remi key
     get_url: 
-    - url: "{{ http://rpms.remirepo.net/RPM-GPG-KEY-remi }}" 
+    - url: "{{ remi_key_url }}" 
     - dest: /etc/pki/rpm-gpg/RPM-GPG-KEY-remi
     become: true 
 
@@ -25,5 +30,5 @@
       - php-mbstring
       - php-xml
       - php-gd
-      nablerepo: "remi-{{ php72 }},epel"
+      nablerepo: "remi-{{ php_version }},epel"
     become: true
