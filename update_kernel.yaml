@@ -1,12 +1,12 @@
 ---
-- hosts: localhost
+- hosts: kernel
   tasks:
-    - name: update kernel to latest versiondfdfd
-      when: ansible_distribution=="CentOS" and ansible_distribution_major_version=="7"
+    - name: update kernel
+      when: ansible_distribution=="CentOS" 
       package:
         name: kernel
         state: latest
       become: yes
       become_method: sudo
-   # - name: restart the system
-   #   command: "shutdown -r now"
+    - name: restart the system
+      command: "shutdown -r now"
