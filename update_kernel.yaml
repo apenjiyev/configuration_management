@@ -1,9 +1,11 @@
 ---
 - hosts: localhost
   tasks:
-    - name: update kernel to latest version
+    - name: update kernel to latest versiondfdfd
       package:
         name: kernel
         state: latest
       become: yes
       become_method: sudo
+    - name: restart the system
+      command: "shutdown -r now"
