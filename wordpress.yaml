@@ -1,6 +1,8 @@
 ---
 - hosts: web
   name: install wordpress
+  gather_facts: no
+  connection: ssh
   become: yes
   become_method: sudo
   tasks: 
@@ -21,7 +23,10 @@
       ignore_errors: true 
     
     - name: update the php version for AWS linux 2 ami
+    
+    - name: update the php version for AWS linux 2 ami
       shell: "sudo amazon-linux-extras install -y lamp-mariadb10.2-php7.2 php7.2"
+
 
     - name: download 1 package
       get_url:
