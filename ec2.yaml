@@ -1,0 +1,12 @@
+---
+- name: creates ec2 instances
+  hosts: localhost
+  tasks:
+    - name: create instances 
+      ec2:
+        key_name: lenovo_windows
+        instance_type: t2.micro
+        image: ami-04b0bb8113f1e464a
+        count: 3
+        vpc_subnet_id: subnet-29e63245
+        assign_public_ip: yes
