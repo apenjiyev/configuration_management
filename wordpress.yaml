@@ -74,7 +74,7 @@
         - php-mbstring
         - php-xml
         - php-gd
-        nablerepo: "remi-{{ php72 }},epel"
+        enablerepo: "remi-{{ php72 }},epel"
       become: true
 
 
