@@ -1,5 +1,5 @@
 ---
-- name: helps download files 
+- name: helps download files  from a source to a local directory
   vars_prompt: 
     - name: URL
       prompt: "give me a url"
@@ -7,7 +7,7 @@
     - name: DESTINATION
       prompt: "give me a destination to download to"
       private: no
-  hosts: all
+  hosts: localhost
   become: yes
   become_method: sudo
   tasks: 
