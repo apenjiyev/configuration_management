@@ -10,7 +10,7 @@
     - name: HOST
       prompt: "which host ?"
       private: no
-  hosts: localhost
+  hosts: "{{HOST}}"
   become: yes
   become_method: sudo
   tasks: 
