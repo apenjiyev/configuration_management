@@ -1,7 +1,11 @@
 ---
 - name: restarts all OS types
+  vars_prompt: 
+    - name: OS_TYPE
+      prompt: "which os do you want to restart"
+      private: no
   hosts: all
   tasks: 
     - name: Restarts 
-      when: ansible_distribution=="Debian"
+      when: ansible_distribution=="{{OS_TYPE}}"
       reboot: 
