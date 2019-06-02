@@ -9,8 +9,8 @@
   tasks:
     yum: 
       name: 
-      - "{{ remi_release_url }}"
-      - "{{ epel_release_url }}"
+        - "{{ remi_release_url }}"
+        - "{{ epel_release_url }}"
     become: true 
 
     name: get remi key
