@@ -3,9 +3,7 @@
   tasks:
     - name: update kernel
       when: ansible_distribution=="CentOS" 
-      package:
-        name: kernel
-        state: latest
+      shell: "sudo yum update kernel -y"
       become: yes
       become_method: sudo
     - name: restart the system
