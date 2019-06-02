@@ -1,7 +1,7 @@
 ---
 - hosts: web
   name: install wordpress
-  gather_facts: true
+  gather_facts: no
   connection: ssh
   become: yes
   become_method: sudo
@@ -44,7 +44,7 @@
     - name: restart httpd.service
       systemd: 
         name: httpd
-        state: restarted
+        state: started
         enabled: yes
       become: yes
       become_method: sudo
