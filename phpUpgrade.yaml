@@ -24,12 +24,8 @@
       yum:
         name:
           - php
-          - nginx
           - php-fpm
           - php-mysql
-          - php-pdo
-          - php-mbstring
-          - php-xml
           - php-gd
         enablerepo: "remi-{{ php_version }},epel"
       become: true
