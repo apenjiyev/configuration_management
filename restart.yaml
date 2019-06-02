@@ -1,0 +1,7 @@
+---
+- name: restarts all OS types
+  hosts: all
+  tasks: 
+    - name: Restarts 
+      when: ansible_distribution=="Debian"
+      reboot: 
