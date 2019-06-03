@@ -9,4 +9,5 @@
         name: kernel
         state: latest
     - name: restart the system
-      command: "shutdown -r now"
+      when: ansible_distribution == "CentOS"
+      reboot: 
