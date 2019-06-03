@@ -4,7 +4,7 @@
   tasks:
     - name: create debian
       ec2:
-        key_name: lenovo_windows
+        key_name: myWindows
         instance_type: t2.micro
         image: ami-08e053c0dc7059edf
         count: 1
@@ -13,7 +13,7 @@
         assign_public_ip: yes
     - name: create ubuntu
       ec2:
-        key_name: lenovo_windows
+        key_name: myWindows
         instance_type: t2.micro
         image: ami-08e053c0dc7059edf
         count: 1
