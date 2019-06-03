@@ -1,5 +1,5 @@
 ---
-- name: create Debian and Ubuntu instances
+- name: create Debian jhand Ubuntu instances
   hosts: localhost
   tasks:
     - name: create debian
