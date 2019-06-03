@@ -1,6 +1,5 @@
 ---
 - name: create Debian and Ubuntu instances. dfsfs
-  hosts: localhosts
   tasks:
     - name: create debian
       ec2:
