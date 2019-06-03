@@ -6,7 +6,7 @@
       ec2:
         key_name: lenovo_windows
         instance_type: t2.micro
-        image: ami-067e80109aff3e2c2
+        image: ami-08e053c0dc7059edf
         count: 1
         region: us-east-1
         vpc_subnet_id: subnet-66a2e201
@@ -15,7 +15,7 @@
       ec2:
         key_name: lenovo_windows
         instance_type: t2.micro
-        image: ami-0c55b159cbfafe1f0
+        image: ami-08e053c0dc7059edf
         count: 1
         region: us-east-1
         vpc_subnet_id: subnet-66a2e201
