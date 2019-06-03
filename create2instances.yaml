@@ -8,7 +8,7 @@
         instance_type: t2.micro
         image: ami-067e80109aff3e2c2
         count: 1
-        region: us-east-2
+        region: us-east-1
         vpc_subnet_id: subnet-38993e74
         assign_public_ip: yes
     - name: create ubuntu
@@ -17,6 +17,6 @@
         instance_type: t2.micro
         image: ami-0c55b159cbfafe1f0
         count: 1
-        region: us-east-2
+        region: us-east-1
         vpc_subnet_id: subnet-38993e74
         assign_public_ip: yes
