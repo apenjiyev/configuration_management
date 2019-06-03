@@ -1,10 +1,12 @@
 ---
 - hosts: kernel
+  become: yes
+  become_method: sudo
   tasks:
     - name: update kernel
-      when: ansible_distribution=="CentOS" 
-      shell: "sudo yum update kernel -y"
-      become: yes
-      become_method: sudo
+      when: ansible_distribution == "CentOS" 
+      package:
+        name: kernel
+        state: latest
     - name: restart the system
       command: "shutdown -r now"
