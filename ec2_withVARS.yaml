@@ -1,0 +1,27 @@
+---
+- name: creates ec2 instances
+  hosts: localhost
+  vars_files: 
+    - ec2_vars
+  tasks:
+    - name: create instances 
+      ec2:
+        key_name: "{{key_name}}"
+        instance_type: "{{instance_type}}"
+        image: "{{image}}"
+        count: "{{count}}"
+        vpc_subnet_id: "{{vpc_subnet_id}}"
+        region: "{{region}}"
+        user_data: "{{ lookup('file', 'user_date.sh')}}"
+        assign_public_ip: yes
+
+
+
+
+#key_name: lenovo_windows
+#instance_type: t2.micro
+#image: ami-04b0bb8113f1e464a
+#count: 1
+#vpc_subnet_id: subnet-38993e74
+#region: us-east-2
+#assign_public_ip: yes
