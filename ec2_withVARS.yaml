@@ -12,7 +12,7 @@
         count: "{{count}}"
         vpc_subnet_id: "{{vpc_subnet_id}}"
         region: "{{region}}"
-        user_data: "{{ lookup('file', 'user_date.sh')}}"
+        #user_data: "{{ lookup('file', 'user_date.sh')}}"
         assign_public_ip: yes
 
 
