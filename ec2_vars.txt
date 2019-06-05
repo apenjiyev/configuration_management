@@ -1,0 +1,7 @@
+key_name: lenovo_windows
+instance_type: t2.micro
+image: ami-04b0bb8113f1e464a
+count: 1
+vpc_subnet_id: subnet-38993e74
+region: us-east-2
+assign_public_ip: yes
