@@ -1,12 +1,12 @@
 --- 
-  - name: install r1soft agent
+  - name: install r1soft agent f
     hosts: target
     become: yes
     become_method: sudo
     tasks:
-      - name: create repository 
+      - block:
         when: ansible_distribution == "CentOS"
-        block:
+        - name: create repository 
           copy: 
             src: r1soft.repo
             dest: /etc/yum.repos.d/r1soft.repo
