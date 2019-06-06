@@ -20,15 +20,11 @@
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
     
-    handlers:
-      - name: R1SOST_INSTALLED
-        systemd:
-            name: sbm-agent
-            state: restarted     
+    
+            
+            
 
-
-
-        #this block of code is for centos6
+#this block of code is for centos6
       - block:
         - name: create repository 
           copy: 
@@ -39,11 +35,13 @@
           package: 
             name: serverbackup-enterprise-agent
             state: latest 
+          notify: R1SOFT_INSTALLED_ON_CENTOS6  
 
         - name: start agent
           service:
             name: cdp-agent
             state: restarted
+          notify: R1SOFT_INSTALLED_ON_FEDORA  
         
         - name: get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
@@ -60,6 +58,7 @@
           package: 
             name: serverbackup-enterprise-agent
             state: latest 
+          notify: R1SOFT_INSTALLED_ON_CENTOS8
 
         - name: start agent
           systemd:
@@ -81,6 +80,7 @@
           package: 
             name: serverbackup-enterprise-agent
             state: latest 
+          notify: R1SOFT_INSTALLED_ON_FEDORA
 
         - name: start agent
           systemd:
@@ -90,3 +90,23 @@
         - name: get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
         when: ansible_distribution == "Fedora" and ansible_distribution_major_version == "28"
+
+
+  handlers:
+      - name: R1SOFT_INSTALLED_ON_CENTOS7
+        systemd:
+            name: sbm-agent
+            state: restarted 
+      - name: R1SOFT_INSTALLED_ON_CENTOS6
+        service:
+            name: cdp-agent
+            state: restarted   
+      - name: R1SOFT_INSTALLED_ON_CENTOS8
+        systemd:
+            name: sbm-agent
+            state: restarted
+      - name: R1SOFT_INSTALLED_ON_FEDORA
+        systemd:
+            name: sbm-agent
+            state: restarted      
+
