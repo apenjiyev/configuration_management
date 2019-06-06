@@ -22,4 +22,24 @@
         
         - name: get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
-        when: ansible_distribution == "CentOS"
+        when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+#this block of code is for centos6
+      - block:
+        - name: create repository 
+          copy: 
+            src: r1soft.repo
+            dest: /etc/yum.repos.d/r1soft.repo
+        
+        - name: install r1soft agent
+          package: 
+            name: serverbackup-enterprise-agent
+            state: latest 
+
+        - name: start agent
+          systemd:
+            name: cdp-agent
+            state: restarted
+        
+        - name: get key
+          shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
+        when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
