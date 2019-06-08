@@ -36,13 +36,7 @@
             name: serverbackup-enterprise-agent
             state: latest 
           notify: R1SOFT_INSTALLED_ON_CENTOS6  
-
-        - name: start agent
-          service:
-            name: cdp-agent
-            state: restarted
-          notify: R1SOFT_INSTALLED_ON_FEDORA  
-        
+          
         - name: get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
