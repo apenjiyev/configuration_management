@@ -1,5 +1,5 @@
 --- 
-  - name: install r1soft agent on 3 centos6  and  3 centos7  instances
+  - name: install r1soft agent f
     hosts: instances
     become: yes
     become_method: sudo
@@ -7,8 +7,8 @@
       - block:
         - name: create repository 
           copy: 
-            src: r1softAgent.repo
-            dest: /etc/yum.repos.d/r1softAgent.repo
+            src: r1soft.repo
+            dest: /etc/yum.repos.d/r1soft.repo
         
         - name: install r1soft agent
           package: 
@@ -20,23 +20,20 @@
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
     
-    
-            
-            
 
 #this block of code is for centos6
       - block:
         - name: create repository 
           copy: 
-            src: r1softAgent.repo
-            dest: /etc/yum.repos.d/r1softAgent.repo
+            src: r1soft.repo
+            dest: /etc/yum.repos.d/r1soft.repo
         
         - name: install r1soft agent
           package: 
             name: serverbackup-enterprise-agent
             state: latest 
           notify: R1SOFT_INSTALLED_ON_CENTOS6  
-          
+
         - name: get key
           shell: "r1soft-setup --get-key http://r1soft.acirrustech.com"
         when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
@@ -51,4 +48,3 @@
           service:
               name: cdp-agent
               state: restarted   
-
