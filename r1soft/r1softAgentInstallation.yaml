@@ -8,7 +8,7 @@
         - name: create repository 
           copy: 
             src: r1softAgent.repo
-            dest: /etc/yum.repos.d/r1soft.repo
+            dest: /etc/yum.repos.d/r1softAgent.repo
         
         - name: install r1soft agent
           package: 
@@ -28,8 +28,8 @@
       - block:
         - name: create repository 
           copy: 
-            src: r1soft.repo
-            dest: /etc/yum.repos.d/r1soft.repo
+            src: r1softAgent.repo
+            dest: /etc/yum.repos.d/r1softAgent.repo
         
         - name: install r1soft agent
           package: 
