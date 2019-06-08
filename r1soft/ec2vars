@@ -1,4 +1,4 @@
-key_name: ANSIBLE
+key_name: "ANSIBLE"
 instance_type: t2.micro
 centos7: "ami-0f2b4fc905b0bd1f1"
 centos6: "ami-0a4e0492247630fe1"
