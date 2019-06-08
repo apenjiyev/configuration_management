@@ -1,7 +1,7 @@
 ---
 - name: create multiple instances with variables
   hosts: localhost
-  vars_file:
+  vars_files:
     - ec2VarsforR1SOFT
   tasks:
 #create centos7
