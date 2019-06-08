@@ -1,3 +1,2 @@
 # configuration_management
-*This is a documentation
-*Another line here ...
+*This is an Ansible playbooks portfolio page.
