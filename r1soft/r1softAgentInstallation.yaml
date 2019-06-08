@@ -1,6 +1,6 @@
 --- 
   - name: install r1soft agent on 3 centos6  and  3 centos7  instances
-    hosts: instancesForR1SOFT
+    hosts: instances
     become: yes
     become_method: sudo
     tasks:
