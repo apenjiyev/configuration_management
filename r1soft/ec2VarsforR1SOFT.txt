@@ -1,0 +1,9 @@
+key_name: ansibleCentosUser
+instance_type: t2.micro
+count: 3
+vpc_subnet_id: subnet-38993e74
+region: us-east-2
+assign_public_ip: yes
+
+centos7: "ami-0f2b4fc905b0bd1f1"
+centos6: "ami-0a4e0492247630fe1"
