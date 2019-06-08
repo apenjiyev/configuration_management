@@ -16,7 +16,7 @@
         assign_public_ip: yes
 
   #create centos6
-    - name: create custom centos 7 instances
+    - name: create custom centos 6 instances
       ec2:
         key_name: "{{key_name}}"
         instance_type: "{{instance_type}}"
