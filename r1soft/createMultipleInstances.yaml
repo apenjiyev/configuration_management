@@ -2,7 +2,7 @@
 - name: create multiple instances with variables
   hosts: localhost
   vars_files:
-    - ec2vars
+    - ec2vars.txt
   tasks:
 #create centos7
     - name: create custom centos 7 instances
