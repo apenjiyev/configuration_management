@@ -1,0 +1,14 @@
+---
+- name: provision ec2 instance
+  hosts: all
+  become: yes
+  become_user: root
+  tasks: 
+    - name: ping
+      ping: 
+
+- import_playbook: r1soft.yaml
+- import_playbook: nagiosxi_agent.yaml
+- import_playbook: filebeat.yaml
+
+
