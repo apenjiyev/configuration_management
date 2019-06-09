@@ -1,0 +1,54 @@
+---
+- name: install nagiosxi agent - ncpa
+  hosts: all
+  become: yes
+  become_user: root
+  tasks: 
+    - name: create repo on centos6
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+      shell: "rpm -Uvh http://repo.nagios.com/nagios/6/nagios-repo-6-3.el6.noarch.rpm"
+    
+    - name: install ncpa on cenots6
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
+      package: 
+        name: ncpa
+        status: present
+      notify: NCPA_CENTOS_6
+
+    - name: change the code inside ncpa.cfg
+      lineinfile:
+        path: /usr/local/ncpa/etc/ncpa.cfg
+        regexp: "community_string = mytoken"
+        line: "community_string = StrongPassword"
+    
+    - name: create repo on centos7
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+      shell: "rpm -Uvh http://repo.nagios.com/nagios/7/nagios-repo-7-3.el7.noarch.rpm"
+
+    - name: install ncpa on cenots7
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+      package: 
+        name: ncpa
+        status: present
+      notify: NCPA_CENTOS_7
+
+    - name: change the code inside ncpa.cfg
+      lineinfile:
+        path: /usr/local/ncpa/etc/ncpa.cfg
+        regexp: "community_string = mytoken"
+        line: "community_string = StrongPassword"
+
+
+
+
+  handlers:
+    - name: NCPA_CENTOS_6
+      service:
+        name: ncpa_listener
+        state: restarted
+    - name: NCPA_CENTOS_7
+      systemd:
+        name: ncpa_listener
+        state: restarted
+
+        
