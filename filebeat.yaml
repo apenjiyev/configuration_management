@@ -24,6 +24,16 @@
       notify: FILEBEAT_CENTOS7
 
 
+    - block:
+      - name: add filebeat on amazon
+        shell: "curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.1.1-x86_64.rpm
+"
+      - name: install from rpm
+        shell: "rpm -vi filebeat-7.1.1-x86_64.rpm"
+      when: ansible_distribution == "Amazon"
+      notify: FILEBEAT_AMAZON
+
+
 
   handlers:
     - name: FILEBEAT_CENTOS6
@@ -31,6 +41,10 @@
         name: filebeat
         state: restarted
     - name: FILEBEAT_CENTOS7
+      systemd:
+        name: filebeat
+        state: restarted
+    - name: FILEBEAT_AMAZON
       systemd:
         name: filebeat
         state: restarted
