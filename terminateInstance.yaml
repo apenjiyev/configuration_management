@@ -1,6 +1,6 @@
 ---
 - name: terminate ec2 instances
-  hosts: localhost
+  hosts: all
   tasks:
     - name: terminate instances 
       ec2:
