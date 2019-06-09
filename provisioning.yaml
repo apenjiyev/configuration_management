@@ -8,7 +8,7 @@
       ping: 
 
 - name: install r1soft
-  import_playbook: r1soft.yaml
+  import_playbook: r1soft_agent.yaml
 
 - name: install nagiosxi agent
   import_playbook: nagiosxi_agent.yaml
