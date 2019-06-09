@@ -1,12 +1,5 @@
 ---
 - name: terminate ec2 instances
-  vars_prompt:
-    - name: ID
-      prompt: "which instance?"
-      private: no
-    - name: REGION
-      prompt: "which region?"
-      private: no
   hosts: localhost
   tasks:
     - name: terminate instances 
