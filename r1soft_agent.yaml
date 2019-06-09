@@ -1,6 +1,6 @@
 --- 
   - name: install r1soft agent for aws client  dfsfsf
-    hosts: target
+    hosts: all
     become: yes
     become_method: sudo
     tasks:
@@ -13,7 +13,7 @@
         - name: install r1soft agent
           package: 
             name: serverbackup-enterprise-agent
-            state: latest 
+            state: present
             
         - name: R1SOFT_INSTALLED_ON_CENTOS7
           systemd:
@@ -39,7 +39,7 @@
         - name: install r1soft agent
           package: 
             name: serverbackup-enterprise-agent
-            state: latest 
+            state: present 
         - name: start agent
           service: 
             name: cdp-agent
