@@ -26,14 +26,14 @@
       
 
 
-    - block:
-      - name: add filebeat on amazon
-        shell: "curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.1.1-x86_64.rpm
-"
-      - name: install from rpm
-        shell: "rpm -vi filebeat-7.1.1-x86_64.rpm"
-        notify: FILEBEAT_AMAZON
-      when: ansible_distribution == "Amazon"
+#    - block:
+#      - name: add filebeat on amazon
+#        shell: "curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.1.1-x86_64.rpm
+#"
+#      - name: install from rpm
+#        shell: "rpm -vi filebeat-7.1.1-x86_64.rpm"
+#        notify: FILEBEAT_AMAZON
+#      when: ansible_distribution == "Amazon"
       
 
 
@@ -47,8 +47,5 @@
       systemd:
         name: filebeat
         state: restarted
-    - name: FILEBEAT_AMAZON
-      systemd:
-        name: filebeat
-        state: restarted
+    
       
