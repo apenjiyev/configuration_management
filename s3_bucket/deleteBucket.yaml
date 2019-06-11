@@ -2,12 +2,12 @@
 - name: delete the s3 bucket you created
   hosts: localhost
   vars_files: 
-   - bucketCreds
+   - bucketCreds #varibales file
   tasks:
     - name: delete an s3 bucket
-      aws_s3:
-       aws_access_key: "{{ access_key }}"
-       aws_secret_key: "{{ secret_key }}"
-       bucket: "{{ bucketname }}"
-       mode: delete 
+      aws_s3: #s3 bucket module in ansible
+       aws_access_key: "{{ access_key }}" #IAM user access key
+       aws_secret_key: "{{ secret_key }}" #IAM user secret key
+       bucket: "{{ bucketname }}" #unique bucket name
+       mode: delete #delete mode
       
