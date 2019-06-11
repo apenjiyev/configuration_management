@@ -2,7 +2,7 @@
 - name: create s3 bucket
   hosts: localhost
   vars_files:
-   - bucketCreds.yaml
+   - bucketCreds
   vars:
     bucketname: DigitalContainer
   tasks: 
