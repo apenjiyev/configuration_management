@@ -1,3 +1,14 @@
 ---
 - name: create s3 bucket
+  hosts: localhost
+  vars_files:
+   - bucketCreds.yaml
+  vars:
+    bucketname: DigitalContainer
   tasks: 
+    - name: create an S3 bucket
+      s3:
+       aws_access_key: "{{ access_key }}"
+       aws_secret_key: "{{ secret_key }}"
+       bucket: "{{ bucketname }}"
+       mode: create
