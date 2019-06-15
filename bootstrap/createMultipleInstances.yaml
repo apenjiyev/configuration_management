@@ -1,0 +1,28 @@
+---
+- name: create multiple instances with variables
+  hosts: localhost
+  vars_files:
+    - ec2vars.txt
+  tasks:
+#create centos7
+    - name: create custom centos 7 instances
+      ec2:
+        key_name: "{{key_name}}"
+        instance_type: "{{instance_type}}"
+        image: "{{centos7}}"
+        count: "{{count}}"
+        vpc_subnet_id: "{{vpc_subnet_id}}"
+        region: "{{region}}"
+        assign_public_ip: yes
+
+  #create centos6
+    - name: create custom centos 6 instances
+      ec2:
+        key_name: "{{key_name}}"
+        instance_type: "{{instance_type}}"
+        image: "{{centos6}}"
+        count: "{{count}}"
+        vpc_subnet_id: "{{vpc_subnet_id}}"
+        region: "{{region}}"
+        assign_public_ip: yes
+        

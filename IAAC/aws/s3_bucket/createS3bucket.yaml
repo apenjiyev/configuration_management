@@ -1,8 +1,6 @@
 ---
 - name: create s3 bucket
   hosts: localhost
-  vars_files:
-   - bucketCreds #name of the variables file
   tasks: 
     - name: create an S3 bucket
       aws_s3:       #s3 bucket module in ansible
