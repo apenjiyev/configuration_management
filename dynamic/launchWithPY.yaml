@@ -1,6 +1,6 @@
 ---
 - name: create a centos 7 instances using dynamic inventory 
-  hosts: localhost
+  hosts: all
   tasks:
     - name: create Centos 7 VM
       ec2:
