@@ -1,0 +1,12 @@
+---
+- name: create centos 7 instance 
+  hosts: all
+  tasks:
+    - name: create Centos 7 VM
+      ec2:
+        key_name: towerCentOS
+        instance_type: t2.micro
+        image: ami-0f2b4fc905b0bd1f1
+        count: 3
+        vpc_subnet_id: subnet-4f85ff35
+        assign_public_ip: yes
