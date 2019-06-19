@@ -1,5 +1,5 @@
 ---
-- name: create Debian jhand Ubuntu instances
+- name: create centos 7 instance 
   hosts: localhost
   tasks:
     - name: create Centos 7 VM
