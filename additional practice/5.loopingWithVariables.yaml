@@ -23,3 +23,5 @@
       state: '{{file_state}}'
     with_items: '{{packages}}'
     when: ansible_os_family == "Debian"
+#ansible-playbook -i inventory 5.loopingWithVariables.yaml 
+#                     -e file_state=touch -e pkg_state=latest
