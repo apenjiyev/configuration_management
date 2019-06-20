@@ -20,7 +20,7 @@
   - name: iterate over animal array
     file:
       name: '/tmp/{{item.key}}-{{item.value.color}}' #item.key tabby/calico |||item.valu.color gray/orange etc.
-      state: '{{file_state}}' #variable user can change
+      state: '{{file_state}}' #variable that user can change (touch or absent)
     with_dict: '{{animals.cats}}' #function which parses text in the variables
 
   - name: iterate over animals array
