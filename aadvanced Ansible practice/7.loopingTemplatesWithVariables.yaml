@@ -1,0 +1,19 @@
+---
+- hosts: all
+  vars:
+    packages: [git,vim,ruby] #list of packages installed
+  tasks:
+  - name: deploy a template file with a loop
+    template:
+      src: templates/template2.j2 #jinja file that is used for templating
+      dest: /tmp/template2.txt #destination where template is saved after tempmlating process using jinja engine
+    tags:
+      - create #ansible-playbook -i inventory fileName.yaml --tags create
+     
+    #clean up after running the task
+  - name: remove the templated file
+    file:
+      dest: /tmp/template2.txt
+      state: absent
+    tags:
+      - destroy #ansible-playbook -i inventory fileName.yaml --tags destroy
