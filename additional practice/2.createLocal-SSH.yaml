@@ -1,0 +1,17 @@
+---
+#create a file using an ssh connection
+- hosts: localhost
+  tasks:
+  - name: create a file via ssh connection
+    file:
+      dest: /tmp/ssh-created
+      state: touch
+
+#create a file using a local connection, this is faster if you have tasks running on localhost only
+- hosts: localhost
+  connection: local
+  tasks:
+  - name: create a file via direct local connection
+    file:
+      dest: /tmp/direct-created
+      state: touch
