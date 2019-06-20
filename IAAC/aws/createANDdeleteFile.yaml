@@ -1,0 +1,30 @@
+---
+#create a file on all hosts
+- hosts: all
+  tasks:
+  - name: create a file
+    file:
+      dest: /tmp/file
+      state: touch
+    tags:
+      - create-file
+
+#delete file in all except db2 group
+- hosts: all:!db2
+  tags:
+    - delete-file
+  tasks:
+  - name: delete a file
+    file:
+      dest: /tmp/file
+      state: absent
+
+#delete a file in db2 group of hosts
+- hosts: db2
+  tasks:
+  - name: delete a file
+    file:
+      dest: /tmp/file
+      state: absent
+    tags:
+      - delete-file
