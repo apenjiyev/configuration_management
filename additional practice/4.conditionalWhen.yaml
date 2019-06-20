@@ -1,0 +1,17 @@
+---
+- hosts: web
+  tasks:
+  - name: create
+    file:
+      dest: /tmp/web2-on-web1
+      state: '{{file_state}}'
+      #ansible-playbook -i inventory 4.conditionalWhen.yaml -e file_state=touch
+    when: hostvars[inventory_hostname]['inventory_hostname'] == 'web1'
+#this checks if the inventory_hostname is equal to web1, if it is then it executes the task
+  
+  - name: create
+    file:
+      dest: /tmp/web1-on-web2
+      state: '{{file_state}}'
+    when: inventory_hostname == 'web2'
+    #this is a simpler version of checking if inven.hostname is web2
