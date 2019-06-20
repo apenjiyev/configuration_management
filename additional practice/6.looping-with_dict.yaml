@@ -1,0 +1,31 @@
+---
+- hosts: all
+  vars:
+    animals:
+      cats:
+        tabby:
+          color: grey
+          persnickityness: high
+        calico:
+          color: orange
+          persnickityness: medium
+      dogs:
+        doberman:
+          color: black
+          persnickityness: extreme
+        retriever:
+          color: golden
+          persnickityness: low
+  tasks:
+  - name: iterate over animal array
+    file:
+      name: '/tmp/{{item.key}}-{{item.value.color}}' #item.key tabby/calico |||item.valu.color gray/orange etc.
+      state: '{{file_state}}' #variable user can change
+    with_dict: '{{animals.cats}}' #function which parses text in the variables
+
+  - name: iterate over animals array
+    file:
+      name: '/tmp/{{item.key}}-{{item.value.color}}'
+      state: '{{file_state}}'
+    with_dict: '{{animals.dogs}}'
+    when: 'item.value.persnickityness == "low"' #only iterate over animals array with low persnickityness
