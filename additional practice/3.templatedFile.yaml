@@ -1,0 +1,17 @@
+---
+#using the template module  create template
+- hosts: all
+  tasks:
+  - name: deploy a simple template file
+    template:
+      src: templates/template1.j2
+      dest: /tmp/template1.txt
+    tags:
+      - create
+#remove templated file
+  - name: remove templated file
+    file:
+      dest: /tmp/2-8-template.txt
+      state: absent
+    tags:
+      - destroy
